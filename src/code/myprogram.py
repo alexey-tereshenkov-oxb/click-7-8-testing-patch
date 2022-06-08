@@ -1,3 +1,5 @@
+import shutil
+
 import click
 
 from pathlib import Path
@@ -10,6 +12,15 @@ def regular_function():
         results.append("Exist")
     if not os.path.exists("/tmp"):
         results.append("Does not exist")
+    return results
+
+
+def regular_function_shutil():
+    results = []
+    if shutil.get_archive_formats():
+        results.append("First")
+    if not shutil.get_archive_formats():
+        results.append("Second")
     return results
 
 

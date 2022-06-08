@@ -11,6 +11,12 @@ def test_regular_function():
         assert myprogram.regular_function() == ["Exist", "Does not exist"]
 
 
+def test_regular_function_shutil():
+    with patch('src.code.myprogram.shutil.get_archive_formats') as mocked_exists:
+        mocked_exists.side_effect = [True, False]
+        assert myprogram.regular_function_shutil() == ["First", "Second"]
+
+
 def test_foo_os():
     runner = CliRunner()
     with patch('src.code.myprogram.os.path.exists') as mocked_exists:
